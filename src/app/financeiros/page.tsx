@@ -5,6 +5,8 @@ import FinanceiroForm from '@/components/FinanceiroForm';
 import FinanceiroBuscar from '@/components/FinanceiroBuscar';
 import FinanceiroLista from '@/components/FinanceiroLista';
 import { Financeiro } from '@/types/financeiro';
+import './../../styles/FinanceiroPage.css';
+
 
 export default function FinanceirosPage() {
   const [financeiros, setFinanceiros] = useState<Financeiro[]>([]);
@@ -38,8 +40,8 @@ export default function FinanceirosPage() {
   };
 
   return (
-    <div className="p-6 space-y-6">
-      <h1 className="text-2xl font-bold">Financeiro</h1>
+    <div className="financeiro-container">
+      <h1 className="financeiro-title">Financeiro</h1>
       <FinanceiroForm onInserir={inserir} />
       <FinanceiroBuscar onBuscar={buscarPorId} />
       <FinanceiroLista lista={financeiros} onDeletar={deletar} />

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import '../styles/FinanceiroForm.css'; // ajuste o caminho se necessário
 
 interface Props {
   onInserir: (lucro: number, prejuizo: number) => void;
@@ -9,24 +10,25 @@ export default function FinanceiroForm({ onInserir }: Props) {
   const [prejuizo, setPrejuizo] = useState('');
 
   return (
-    <div className="space-y-2">
-      <h2 className="text-xl font-semibold">Inserir</h2>
+    <div className="form-container">
+      <h2 className="form-subtitle">Opção Selecionada:</h2>
+      <h1 className="form-title">Opção Selecionada:</h1>
       <input
         type="number"
         placeholder="Lucro"
-        className="border p-2 rounded"
+        className="form-input"
         value={lucro}
         onChange={e => setLucro(e.target.value)}
       />
       <input
         type="number"
         placeholder="Prejuízo"
-        className="border p-2 rounded ml-2"
+        className="form-input ml"
         value={prejuizo}
         onChange={e => setPrejuizo(e.target.value)}
       />
       <button
-        className="bg-green-600 text-white px-4 py-2 rounded ml-2"
+        className="form-button"
         onClick={() => {
           onInserir(parseFloat(lucro), parseFloat(prejuizo));
           setLucro('');

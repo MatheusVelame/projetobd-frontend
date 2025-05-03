@@ -1,4 +1,5 @@
 import { Financeiro } from '../types/financeiro';
+import '../styles/FinanceiroLista.css'; // ajuste o caminho conforme sua estrutura
 
 interface Props {
   lista: Financeiro[];
@@ -7,10 +8,10 @@ interface Props {
 
 export default function FinanceiroLista({ lista, onDeletar }: Props) {
   return (
-    <div className="space-y-2">
-      <h2 className="text-xl font-semibold">Todos os Registros</h2>
+    <div className="lista-container">
+      <h2 className="lista-titulo">Todos os Registros</h2>
       {lista.map(f => (
-        <div key={f.idFinanceiro} className="border p-4 rounded bg-white flex justify-between items-center">
+        <div key={f.idFinanceiro} className="lista-item">
           <div>
             <p><strong>ID:</strong> {f.idFinanceiro}</p>
             <p><strong>Lucro:</strong> {f.historicoLucro}</p>
@@ -18,7 +19,7 @@ export default function FinanceiroLista({ lista, onDeletar }: Props) {
             <p><strong>Atualização:</strong> {f.dataAtualizacao}</p>
           </div>
           <button
-            className="bg-red-600 text-white px-4 py-2 rounded"
+            className="lista-botao"
             onClick={() => onDeletar(f.idFinanceiro)}
           >
             Deletar

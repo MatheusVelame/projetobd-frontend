@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Financeiro } from '../types/financeiro';
+import '../styles/FinanceiroBuscar.css';
 
 interface Props {
   onBuscar: (id: string) => Promise<Financeiro | null>;
@@ -15,24 +16,21 @@ export default function FinanceiroBuscar({ onBuscar }: Props) {
   };
 
   return (
-    <div className="space-y-2">
-      <h2 className="text-xl font-semibold">Buscar por ID</h2>
+    <div className="buscar-container">
+      <h2 className="buscar-titulo">Buscar por ID</h2>
       <input
         type="number"
         placeholder="ID"
-        className="border p-2 rounded"
+        className="buscar-input"
         value={id}
         onChange={e => setId(e.target.value)}
       />
-      <button
-        className="bg-blue-600 text-white px-4 py-2 rounded ml-2"
-        onClick={buscar}
-      >
+      <button className="buscar-botao" onClick={buscar}>
         Buscar
       </button>
 
       {resultado && (
-        <div className="mt-2 border p-4 rounded bg-gray-100">
+        <div className="buscar-resultado">
           <p><strong>ID:</strong> {resultado.idFinanceiro}</p>
           <p><strong>Lucro:</strong> {resultado.historicoLucro}</p>
           <p><strong>Prejuízo:</strong> {resultado.historicoPrejuizo}</p>
