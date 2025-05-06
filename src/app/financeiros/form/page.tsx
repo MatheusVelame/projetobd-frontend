@@ -2,15 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import FinanceiroForm from '@/components/FinanceiroForm';
-import FinanceiroBuscar from '@/components/FinanceiroBuscar';
-import FinanceiroLista from '@/components/FinanceiroLista';
 import { Financeiro } from '@/types/financeiro';
-import './../../styles/FinanceiroPage.css';
+import '@/styles/FinanceiroPageForm.css';
 
 
-export default function FinanceirosPage() {
+
+export default function FinanceirosPageForm() {
   const [financeiros, setFinanceiros] = useState<Financeiro[]>([]);
-  const urlBase = 'http://localhost:8081/api/financeiros';
+  const urlBase = 'http://localhost:8081/api/financeiros'; // revisar link
 
   useEffect(() => {
     fetch(urlBase)
@@ -28,23 +27,10 @@ export default function FinanceirosPage() {
     setFinanceiros(prev => [...prev, data]);
   };
 
-  const buscarPorId = async (id: string): Promise<Financeiro | null> => {
-    const res = await fetch(`${urlBase}/${id}`);
-    if (!res.ok) return null;
-    return await res.json();
-  };
-
-  const deletar = async (id: number) => {
-    await fetch(`${urlBase}/${id}`, { method: 'DELETE' });
-    setFinanceiros(financeiros.filter(f => f.idFinanceiro !== id));
-  };
-
   return (
     <div className="financeiro-container">
       <h1 className="financeiro-title">Financeiro</h1>
       <FinanceiroForm onInserir={inserir} />
-      <FinanceiroBuscar onBuscar={buscarPorId} />
-      <FinanceiroLista lista={financeiros} onDeletar={deletar} />
     </div>
   );
 }

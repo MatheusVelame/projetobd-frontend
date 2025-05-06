@@ -8,11 +8,20 @@ interface Props {
 
 export default function FinanceiroBuscar({ onBuscar }: Props) {
   const [id, setId] = useState('');
-  const [resultado, setResultado] = useState<Financeiro | null>(null);
+  const [resultado, setResultado] = useState<Financeiro | null | 'not-found'>(null);
 
   const buscar = async () => {
+    if (!id.trim()) {
+      alert('Digite um ID válido.');
+      return;
+    }
+
     const res = await onBuscar(id);
-    setResultado(res);
+    if (res) {
+      setResultado(res);
+    } else {
+      setResultado('not-found');
+    }
   };
 
   return (
@@ -29,7 +38,11 @@ export default function FinanceiroBuscar({ onBuscar }: Props) {
         Buscar
       </button>
 
-      {resultado && (
+      {resultado === 'not-found' && (
+        <p className="buscar-nao-encontrado">Nenhum registro encontrado com esse ID.</p>
+      )}
+
+      {resultado && resultado !== 'not-found' && (
         <div className="buscar-resultado">
           <p><strong>ID:</strong> {resultado.idFinanceiro}</p>
           <p><strong>Lucro:</strong> {resultado.historicoLucro}</p>

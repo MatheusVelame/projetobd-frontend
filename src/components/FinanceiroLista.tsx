@@ -1,12 +1,11 @@
 import { Financeiro } from '../types/financeiro';
-import '../styles/FinanceiroLista.css'; // ajuste o caminho conforme sua estrutura
+import '../styles/FinanceiroLista.css';
 
 interface Props {
   lista: Financeiro[];
-  onDeletar: (id: number) => void;
 }
 
-export default function FinanceiroLista({ lista, onDeletar }: Props) {
+export default function FinanceiroLista({ lista }: Props) {
   return (
     <div className="lista-container">
       <h2 className="lista-titulo">Todos os Registros</h2>
@@ -18,12 +17,6 @@ export default function FinanceiroLista({ lista, onDeletar }: Props) {
             <p><strong>Prejuízo:</strong> {f.historicoPrejuizo}</p>
             <p><strong>Atualização:</strong> {f.dataAtualizacao}</p>
           </div>
-          <button
-            className="lista-botao"
-            onClick={() => onDeletar(f.idFinanceiro)}
-          >
-            Deletar
-          </button>
         </div>
       ))}
     </div>
