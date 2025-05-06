@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../styles/FinanceiroForm.css'; // ajuste o caminho se necessário
+import '../styles/FinanceiroForm.css'; 
 
 interface Props {
   onInserir: (lucro: number, prejuizo: number) => void;

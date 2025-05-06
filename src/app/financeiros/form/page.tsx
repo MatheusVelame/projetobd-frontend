@@ -9,7 +9,7 @@ import '@/styles/FinanceiroPageForm.css';
 
 export default function FinanceirosPageForm() {
   const [financeiros, setFinanceiros] = useState<Financeiro[]>([]);
-  const urlBase = 'http://localhost:8081/api/financeiros'; // revisar link
+  const urlBase = 'http://localhost:8081/api/financeiros';
 
   useEffect(() => {
     fetch(urlBase)

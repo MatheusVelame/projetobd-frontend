@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Financeiro } from "@/types/financeiro";
-// adicionar o css
+import '../styles/FinanceiroDeletar.css';
 
 interface Props {
     onBuscar: (id: string) => Promise<Financeiro | null>;
@@ -9,12 +9,21 @@ interface Props {
 
 export default function FinanceiroDeletar({ onBuscar, onDeletar }: Props) {
     const [id, setId] = useState('');
-    const [resultado, setResultado] = useState<Financeiro | null>(null);
+    const [resultado, setResultado] = useState<Financeiro | null| 'not-found'>(null);
 
     const buscar = async () => {
+        if (!id.trim()) {
+          alert('Digite um ID válido.');
+          return;
+        }
+    
         const res = await onBuscar(id);
-        setResultado(res);
-    }
+        if (res) {
+          setResultado(res);
+        } else {
+          setResultado('not-found');
+        }
+      };
 
     return (
         <div className="buscar-container">
@@ -30,7 +39,11 @@ export default function FinanceiroDeletar({ onBuscar, onDeletar }: Props) {
                 Buscar
             </button>
 
-            {resultado && (
+            {resultado === 'not-found' && (
+                <p className="buscar-nao-encontrado">Nenhum registro encontrado com esse ID.</p>
+            )}
+
+            {resultado && resultado !== 'not-found' &&(
                 <div className="buscar-resultado">
                 <p><strong>ID:</strong> {resultado.idFinanceiro}</p>
                 <p><strong>Lucro:</strong> {resultado.historicoLucro}</p>

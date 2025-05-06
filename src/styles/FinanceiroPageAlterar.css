@@ -1,0 +1,15 @@
+.financeiro-container {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+  }
+  
+  .financeiro-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #d10000;
+  }
+  
