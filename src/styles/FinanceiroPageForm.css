@@ -1,14 +1,15 @@
-.financeiro-container {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  background-color: #f5f5f5;
-  min-height: 100vh;
+/* Estilo base da página */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
 }
 
-.financeiro-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #d10000;
+/* Aplica box-sizing para todos os elementos */
+*, *::before, *::after {
+  box-sizing: inherit;
 }

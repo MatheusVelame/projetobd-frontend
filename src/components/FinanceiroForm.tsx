@@ -1,42 +1,72 @@
-import { useState } from 'react';
-import '../styles/FinanceiroForm.css'; 
+"use client"
+
+import { useState } from "react"
+import { useRouter } from 'next/navigation'
+import "../styles/FinanceiroForm.css"
 
 interface Props {
-  onInserir: (lucro: number, prejuizo: number) => void;
+  onInserir: (lucro: number, prejuizo: number) => void
 }
 
 export default function FinanceiroForm({ onInserir }: Props) {
-  const [lucro, setLucro] = useState('');
-  const [prejuizo, setPrejuizo] = useState('');
+  const [lucro, setLucro] = useState("")
+  const [prejuizo, setPrejuizo] = useState("")
+  const router = useRouter()
+
+  const handleSubmit = () => {
+    if (lucro && prejuizo) {
+      onInserir(parseFloat(lucro), parseFloat(prejuizo))
+      setLucro("")
+      setPrejuizo("")
+    }
+  }
+
+  const handleVoltar = () => {
+    router.back()
+  }
 
   return (
     <div className="form-container">
-      <h2 className="form-subtitle">Opção Selecionada:</h2>
-      <h1 className="form-title">Opção Selecionada:</h1>
-      <input
-        type="number"
-        placeholder="Lucro"
-        className="form-input"
-        value={lucro}
-        onChange={e => setLucro(e.target.value)}
-      />
-      <input
-        type="number"
-        placeholder="Prejuízo"
-        className="form-input ml"
-        value={prejuizo}
-        onChange={e => setPrejuizo(e.target.value)}
-      />
-      <button
-        className="form-button"
-        onClick={() => {
-          onInserir(parseFloat(lucro), parseFloat(prejuizo));
-          setLucro('');
-          setPrejuizo('');
-        }}
-      >
-        Adicionar
-      </button>
+      <div className="header">
+        <div className="icon-container">
+          <img src="/images/pngwing.com.png" alt="Ícone" className="factory-icon" />
+        </div>
+      </div>
+
+      <div className="form-content">
+        <p className="option-label">Opção selecionada:</p>
+        <h1 className="form-title">Inserir Financeiro</h1>
+
+        <div className="input-group">
+          <label htmlFor="lucro">Histórico Lucro:</label>
+          <input
+            id="lucro"
+            type="number"
+            className="form-input"
+            value={lucro}
+            onChange={(e) => setLucro(e.target.value)}
+          />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="prejuizo">Histórico Prejuízo:</label>
+          <input
+            id="prejuizo"
+            type="number"
+            className="form-input"
+            value={prejuizo}
+            onChange={(e) => setPrejuizo(e.target.value)}
+          />
+        </div>
+
+        <button className="confirm-button" onClick={handleSubmit}>
+          Confirmar
+        </button>
+
+        <button className="back-button" onClick={handleVoltar}>
+          Voltar
+        </button>
+      </div>
     </div>
-  );
+  )
 }
