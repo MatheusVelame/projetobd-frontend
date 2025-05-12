@@ -2,7 +2,7 @@
 
 import FinanceiroBuscar from '@/components/FinanceiroBuscar';
 import { Financeiro } from '@/types/financeiro';
-import '@/styles/FinanceiroPageBuscar.css';
+import '@/styles/Financeiro/FinanceiroPageBuscar.css';
 
 export default function FinanceiroPageBuscar() {
   const urlBase = 'http://localhost:8081/api/financeiros';

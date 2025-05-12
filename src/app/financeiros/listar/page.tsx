@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import FinanceiroLista from "@/components/FinanceiroLista";
 import { Financeiro } from "@/types/financeiro";
-import '@/styles/FinanceiroPageLista.css';
+import '@/styles/Financeiro/FinanceiroPageLista.css';
 
 export default function FinanceirosPageLista() {
   const [financeiros, setFinanceiros] = useState<Financeiro[]>([]);

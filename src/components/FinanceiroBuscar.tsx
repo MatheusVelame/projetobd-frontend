@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Financeiro } from '../types/financeiro';
-import '../styles/FinanceiroBuscar.css';
+import '../styles/Financeiro/FinanceiroBuscar.css';
 
 interface Props {
   onBuscar: (id: string) => Promise<Financeiro | null>;

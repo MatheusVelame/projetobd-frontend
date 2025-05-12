@@ -1,5 +1,5 @@
 import { Financeiro } from '../types/financeiro';
-import '../styles/FinanceiroLista.css';
+import '../styles/Financeiro/FinanceiroLista.css';
 
 interface Props {
   lista: Financeiro[];

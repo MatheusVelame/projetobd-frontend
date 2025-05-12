@@ -1,4 +1,3 @@
-/* Estilo base da página */
 html, body {
   margin: 0;
   padding: 0;
@@ -9,7 +8,6 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Aplica box-sizing para todos os elementos */
 *, *::before, *::after {
   box-sizing: inherit;
 }

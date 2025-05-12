@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from 'next/navigation'
-import "../styles/FinanceiroForm.css"
+import '../styles/Financeiro/FinanceiroForm.css'
 
 interface Props {
   onInserir: (lucro: number, prejuizo: number) => void

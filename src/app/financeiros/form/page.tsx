@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import FinanceiroForm from "@/components/FinanceiroForm"
 import type { Financeiro } from "@/types/financeiro"
-import "@/styles/FinanceiroPageForm.css"
+import '@/styles/Financeiro/FinanceiroPageForm.css'
 
 export default function FinanceirosPageForm() {
   const [financeiros, setFinanceiros] = useState<Financeiro[]>([])
@@ -30,6 +30,6 @@ export default function FinanceirosPageForm() {
   }
 
   return (
-    <FinanceiroForm onInserir={inserir} onVoltar={handleVoltar} />
+    <FinanceiroForm onInserir={inserir} />
   )
 }

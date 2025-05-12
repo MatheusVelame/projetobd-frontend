@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import FinanceiroAlterar from '@/components/FinanceiroAlterar';
 import { Financeiro } from '@/types/financeiro';
-import '@/styles/FinanceiroPageAlterar.css'; 
+import '@/styles/Financeiro/FinanceiroPageAlterar.css'; 
 
 export default function FinanceiroPageAlterar() {
   const [financeiros, setFinanceiros] = useState<Financeiro[]>([]);

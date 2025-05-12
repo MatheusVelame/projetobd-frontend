@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import FinanceiroDeletar from "@/components/FinanceiroDeletar";
 import { Financeiro } from "@/types/financeiro";
-import '@/styles/FinanceiroPageDeletar.css';
+import '@/styles/Financeiro/FinanceiroPageDeletar.css';
 
 export default function FinanceiroPageDeletar() {
     const [financeiros, setFinanceiros] = useState<Financeiro[]>([]);
