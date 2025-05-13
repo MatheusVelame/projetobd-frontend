@@ -28,47 +28,72 @@ export default function FinanceiroAlterar({ onBuscar, onAlterar }: Props) {
   };
 
   return (
-    <div className="buscar-container">
-      <h2 className="buscar-titulo">Buscar por ID</h2>
-      <input
-        type="number"
-        placeholder="ID"
-        className="buscar-input"
-        value={id}
-        onChange={e => setId(e.target.value)}
-      />
-      <button className="buscar-botao" onClick={buscar}>
-        Buscar
-      </button>
+    <div className="alterar-container">
+      <div className="header"> 
+          <div className="icon-container">
+            <img src="/images/pngwing.com.png" alt="Ícone" className="factory-icon" />
+          </div>
+      </div>
 
-      {resultado === 'not-found' && (
-        <p className="buscar-nao-encontrado">Nenhum registro encontrado com esse ID.</p>
-      )}
+      <div className="alterar-content">
+        <p className="option-label">Opção Selecionada: </p>
+        <h1 className="alterar-title">Alterar Financeiros</h1>
 
-      {resultado && resultado !== 'not-found' && (
-        <div className="buscar-resultado">
-          <p><strong>ID:</strong> {resultado.idFinanceiro}</p>
-          <p><strong>Lucro:</strong> {resultado.historicoLucro}</p>
-          <p><strong>Prejuízo:</strong> {resultado.historicoPrejuizo}</p>
-          <p><strong>Data:</strong> {resultado.dataAtualizacao}</p>
-
-          <h1 className="form-title">Números para alterar</h1>
+        <div className="input-group">
+          <label htmlFor="id">Digite o Id do Financeiro que deseja alterar:</label>
           <input
-            type="number"
-            placeholder="Lucro"
-            className="form-input"
-            value={lucro}
-            onChange={e => setLucro(e.target.value)}
+          id="id"
+          type="number"
+          className="alterar-input"
+          value={id}
+          onChange={e => setId(e.target.value)}
           />
-          <input
-            type="number"
-            placeholder="Prejuízo"
-            className="form-input ml"
-            value={prejuizo}
-            onChange={e => setPrejuizo(e.target.value)}
-          />
+        </div>
+
+        <button className="confirm-button" onClick={buscar}>
+          Buscar
+        </button>
+
+        {resultado == 'not-found' && (
+          <p className="buscar-nao-encontrado">Nenhum registro encontrado com esse ID.</p>
+        )}
+        
+        
+        {resultado && resultado !== 'not-found' && (
+        <div className="alterar-container">
+          
+          <div className="buscar-result">
+            <p><strong>Resultado:</strong></p>
+            <p><strong>ID:</strong> {resultado.idFinanceiro}</p>
+            <p><strong>Lucro:</strong> {resultado.historicoLucro}</p>
+            <p><strong>Prejuízo:</strong> {resultado.historicoPrejuizo}</p>
+            <p><strong>Data:</strong> {resultado.dataAtualizacao}</p>
+          </div>
+
+          <h1 className="alterar-title">Informe os dados que deseja alterar</h1>
+        
+          <div className="input-group">
+            <input
+              type="number"
+              placeholder="Lucro"
+              className="alterar-input"
+              value={lucro}
+              onChange={e => setLucro(e.target.value)}
+            />
+          </div>
+          
+          <div className="input-group">
+            <input
+              type="number"
+              placeholder="Prejuízo"
+              className="alterar-input"
+              value={prejuizo}
+              onChange={e => setPrejuizo(e.target.value)}
+            /> 
+          </div>
+
           <button
-            className="form-button"
+            className="confirm-button"
             onClick={() => {
                 if (typeof resultado === 'object' && resultado !== null) {
                     onAlterar(resultado.idFinanceiro, parseFloat(lucro), parseFloat(prejuizo));
@@ -81,6 +106,8 @@ export default function FinanceiroAlterar({ onBuscar, onAlterar }: Props) {
           </button>
         </div>
       )}
+
+      </div>
     </div>
   );
 }

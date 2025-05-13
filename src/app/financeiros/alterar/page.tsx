@@ -53,9 +53,6 @@ export default function FinanceiroPageAlterar() {
   };
 
   return (
-    <div className="financeiro-container">
-      <h1 className="financeiro-title">Alterar Financeiro</h1>
       <FinanceiroAlterar onBuscar={buscarPorId} onAlterar={alterar} />
-    </div>
   );
 }

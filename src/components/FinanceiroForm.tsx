@@ -34,7 +34,7 @@ export default function FinanceiroForm({ onInserir }: Props) {
       </div>
 
       <div className="form-content">
-        <p className="option-label">Opção selecionada:</p>
+        <p className="option-label">Opção Selecionada:</p>
         <h1 className="form-title">Inserir Financeiro</h1>
 
         <div className="input-group">
